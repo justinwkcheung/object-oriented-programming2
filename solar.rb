@@ -8,6 +8,11 @@ class System
 
 
   def add(body)
+    @bodies.each do |x|
+      if x == body
+        return "This body already exists!"
+      end
+    end
     @bodies << body
     return "the list of bodies is #{@bodies}"
   end
@@ -66,7 +71,10 @@ end
 
 earth = Planet.new("earth", 50, 24, 365)
 mars = Planet.new("mars", 80, 30, 400)
+sun = Star.new("star", 90, "g-star")
 
 puts system.add(earth)
 puts system.add(mars)
+puts system.add(mars)
+puts system.add(sun)
 puts system.total_mass
