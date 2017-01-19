@@ -3,22 +3,20 @@ class System
   attr_reader :bodies, :total_mass, :masses
   def initialize
     @bodies = []
-    @masses = []
     @total_mass = 0
   end
 
 
   def add(body)
-    @bodies << body.name
-    @masses << body.mass
+    @bodies << body
     return "the list of bodies is #{@bodies}"
   end
 
 
   def total_mass
-    @masses.each do |body|
+    @bodies.each do |body|
 
-      @total_mass += body
+      @total_mass += body.mass
     end
     return "the total mass of the system is #{@total_mass}"
   end
@@ -68,9 +66,7 @@ end
 
 earth = Planet.new("earth", 50, 24, 365)
 mars = Planet.new("mars", 80, 30, 400)
-# puts earth.name, earth.mass, earth.day, earth.year
+
 puts system.add(earth)
 puts system.add(mars)
-# puts system.total_mass(earth)
-# puts system.total_mass(mars)
 puts system.total_mass
