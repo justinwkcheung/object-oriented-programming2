@@ -60,7 +60,7 @@ end
 
 class Planet < Body
 
-  @@planet_count = 0
+  # @@planet_count = 0
 
   attr_reader :day, :year
   def initialize(name, mass, day, year)
@@ -69,23 +69,24 @@ class Planet < Body
     @year = year
   end
 
-  def self.planet_count
-    @@planet_count
-  end
+  # def self.planet_count
+  #   @@planet_count
+  # end
 
   def self.all(sys)
+    planet_count = 0
     sys.bodies.each do |body|
       if body.class == Planet
-        @@planet_count += 1
+        planet_count += 1
       end
     end
-    return @@planet_count
+    return planet_count
   end
 end
 
 class Star < Body
 
-  @@star_count = 0
+  # @@star_count = 0
 
   attr_reader :type
 
@@ -94,24 +95,25 @@ class Star < Body
     @type = type
   end
 
-  def self.star_count
-    @@star_count
-  end
+  # def self.star_count
+  #   @@star_count
+  # end
 
   def self.all(sys)
+    star_count = 0 
     sys.bodies.each do |body|
       if body.class == Star
-        @@star_count += 1
+        star_count += 1
       end
     end
-    return @@star_count
+    return star_count
   end
 
 end
 
 class Moon < Body
 
-  @@moon_count = 0
+  # @@moon_count = 0
 
   attr_reader :month, :planet
   def initialize(name, mass, month, planet)
@@ -119,18 +121,19 @@ class Moon < Body
     @month = month
     @planet = planet
   end
-
-  def self.moon_count
-    @@moon_count
-  end
+  #
+  # def self.moon_count
+  #   @@moon_count
+  # end
 
   def self.all(sys)
+    moon_count = 0
     sys.bodies.each do |body|
       if body.class == Star
-        @@moon_count += 1
+        moon_count += 1
       end
     end
-    return @@moon_count
+    return moon_count
   end
 end
 
